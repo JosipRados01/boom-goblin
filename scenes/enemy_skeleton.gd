@@ -1,6 +1,8 @@
 extends CharacterBody3D
 ## Patrols between its spawn point and spawn + patrol_offset. Sees the goblin
 ## in a cone (blocked by walls and cover via raycast) and chases on sight.
+## Breaking that sight line with level geometry drops the chase almost at once;
+## just leaving the cone lets him hunt the last known spot for a while longer.
 ## The Eye spotlight IS the vision cone: yellow on patrol, red when chasing.
 
 @export var patrol_offset := Vector3(12, 0, 0)
@@ -10,6 +12,9 @@ extends CharacterBody3D
 @export var vision_angle_deg := 38.0
 @export var catch_range := 1.2
 @export var give_up_time := 2.5
+## Cover beats footwork: dropping behind a wall breaks a chase this fast, while
+## merely slipping out of the cone still buys the full give_up_time of pursuit.
+@export var blocked_give_up_time := 0.35
 @export var turn_speed := 8.0
 
 @onready var model: Node3D = $Model
@@ -29,6 +34,12 @@ var _current_anim := ""
 
 const EYE_PATROL := Color(1.0, 0.93, 0.6)
 const EYE_CHASE := Color(1.0, 0.25, 0.15)
+
+enum Sight {
+	VISIBLE,
+	BLOCKED,  ## In the cone and in range, but something solid is in the way.
+	OUT_OF_VIEW,  ## Too far away, or off to the side.
+}
 
 
 func _ready() -> void:
@@ -57,7 +68,8 @@ func _physics_process(delta: float) -> void:
 		if not _player:
 			return
 
-	if _can_see_player():
+	var sight := _look_for_player()
+	if sight == Sight.VISIBLE:
 		if not _chasing:
 			eye.light_color = EYE_CHASE
 		_chasing = true
@@ -65,7 +77,8 @@ func _physics_process(delta: float) -> void:
 		_last_seen = _player.global_position
 	elif _chasing:
 		_lost_t += delta
-		if _lost_t > give_up_time:
+		var patience := blocked_give_up_time if sight == Sight.BLOCKED else give_up_time
+		if _lost_t > patience:
 			_chasing = false
 			eye.light_color = EYE_PATROL
 
@@ -100,22 +113,35 @@ func _physics_process(delta: float) -> void:
 		_player.caught_by(self)
 
 
-func _can_see_player() -> bool:
-	var eye_pos := global_position + Vector3.UP * 1.3
-	var head := _player.global_position + Vector3.UP * 0.8
-	var to := head - eye_pos
+## Splits "can't see him" into "he's hiding" and "he's not in front of me", so the
+## chase can end the moment he puts the grid map's geometry between us.
+func _look_for_player() -> Sight:
+	var head := _player_head()
+	var to := head - _eye_pos()
 	if to.length() > vision_range:
-		return false
+		return Sight.OUT_OF_VIEW
 	var flat := Vector3(to.x, 0.0, to.z)
-	if flat.length() < 0.01:
-		return true
 	# Body faces +Z, same convention as the models.
-	if global_basis.z.angle_to(flat) > deg_to_rad(vision_angle_deg):
-		return false
-	var query := PhysicsRayQueryParameters3D.create(eye_pos, head)
+	if flat.length() > 0.01 \
+			and global_basis.z.angle_to(flat) > deg_to_rad(vision_angle_deg):
+		return Sight.OUT_OF_VIEW
+	return Sight.VISIBLE if _eye_line_clear(head) else Sight.BLOCKED
+
+
+## True when nothing solid — GridMap walls included — sits between eye and point.
+func _eye_line_clear(to_pos: Vector3) -> bool:
+	var query := PhysicsRayQueryParameters3D.create(_eye_pos(), to_pos)
 	query.exclude = [get_rid()]
 	var hit := get_world_3d().direct_space_state.intersect_ray(query)
 	return hit.is_empty() or hit.get("collider") == _player
+
+
+func _eye_pos() -> Vector3:
+	return global_position + Vector3.UP * 1.3
+
+
+func _player_head() -> Vector3:
+	return _player.global_position + Vector3.UP * 0.8
 
 
 func _play(anim_name: String, blend := 0.2) -> void:

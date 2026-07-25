@@ -38,7 +38,10 @@ Run the editor/game with: `/Users/josiprados/Downloads/Godot 2.app/Contents/MacO
   coroutine on a freed node.
 - `enemy_ghost.gd` — intangible, group `"no_autocol"`, hovers a lane, `patrol_axis` dropdown (X/Z).
 - `enemy_skeleton.gd` — patrols spawn↔spawn+`patrol_offset`, cone + LOS raycast; its Eye
-  SpotLight **is** the vision cone (yellow patrol / red chase).
+  SpotLight **is** the vision cone (yellow patrol / red chase). `_look_for_player()` returns
+  *why* sight failed: breaking the ray on level geometry ends the chase after
+  `blocked_give_up_time` (0.35s), while merely leaving the cone still buys `give_up_time` (2.5s)
+  of hunting the last known spot.
 - `add_level_collision.gd` — runtime trimesh collision for plain GLB meshes. GridMaps don't need
   it (collision is baked into each level's embedded MeshLibrary).
 - Unused leftovers: `first_dungeon.tscn`, `level_test.tscn`, `main.tscn`, `night_env.tres`,

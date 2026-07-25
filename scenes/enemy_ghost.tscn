@@ -11,4 +11,4 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.8, 0)
 
 [node name="Glow" type="OmniLight3D" parent="." unique_id=225304462]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
-light_color = Color(0.55, 0.75, 1, 1)
+light_color = Color(0.73100406, 0.30202973, 0.23248476, 1)

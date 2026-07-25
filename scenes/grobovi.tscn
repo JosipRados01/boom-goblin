@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cci8kfsmydsp6"]
+
+[ext_resource type="PackedScene" uid="uid://eug2h6c5b78f" path="res://Graveyard models/GLB format/gravestone-flat-open.glb" id="1_8lbum"]
+[ext_resource type="PackedScene" uid="uid://d36imut7adqrp" path="res://Graveyard models/GLB format/gravestone-flat.glb" id="2_05xxs"]
+[ext_resource type="PackedScene" uid="uid://bpqvsceb834mq" path="res://Graveyard models/GLB format/gravestone-roof.glb" id="3_xmd0f"]
+[ext_resource type="PackedScene" uid="uid://djyetdq0xco2a" path="res://Graveyard models/GLB format/gravestone-round.glb" id="4_t1dh0"]
+[ext_resource type="PackedScene" uid="uid://b1yqk4y0twwex" path="res://Graveyard models/GLB format/gravestone-wide.glb" id="5_0t8ac"]
+[ext_resource type="PackedScene" uid="uid://on1y30kek5bs" path="res://Graveyard models/GLB format/gravestone-cross-large.glb" id="6_sd1q0"]
+[ext_resource type="PackedScene" uid="uid://cqxp2cuuq0llg" path="res://Graveyard models/GLB format/gravestone-cross.glb" id="7_6ir2k"]
+[ext_resource type="PackedScene" uid="uid://ifo1b7gwtn78" path="res://Graveyard models/GLB format/gravestone-debris.glb" id="8_xqpkt"]
+[ext_resource type="PackedScene" uid="uid://crwuf78hwvvhe" path="res://Graveyard models/GLB format/gravestone-broken.glb" id="9_yam63"]
+[ext_resource type="PackedScene" uid="uid://b4px8w7v4pbv0" path="res://Graveyard models/GLB format/gravestone-bevel.glb" id="10_soicp"]
+[ext_resource type="PackedScene" uid="uid://d0lpuxi3jx08p" path="res://Graveyard models/GLB format/grave.glb" id="11_xfpyt"]
+[ext_resource type="PackedScene" uid="uid://c4rxy2884x60r" path="res://Graveyard models/GLB format/grave-border.glb" id="12_kwixv"]
+
+[sub_resource type="MeshLibrary" id="MeshLibrary_qmi2p"]
+
+[node name="Node3D" type="Node3D" unique_id=1300322671]
+
+[node name="gravestone-flat-open2" parent="." unique_id=1939019877 instance=ExtResource("1_8lbum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31648088, 0, 0.74860907)
+
+[node name="gravestone-flat2" parent="." unique_id=1371210406 instance=ExtResource("2_05xxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9412582, 0, 0.6607275)
+
+[node name="gravestone-roof2" parent="." unique_id=1034422457 instance=ExtResource("3_xmd0f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8253595, 0, 1.1063286)
+
+[node name="gravestone-round2" parent="." unique_id=1559812704 instance=ExtResource("4_t1dh0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9227754, 0, 0.21178508)
+
+[node name="gravestone-wide2" parent="." unique_id=195147754 instance=ExtResource("5_0t8ac")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53728557, 0, 1.7094711)
+
+[node name="gravestone-cross-large2" parent="." unique_id=447371769 instance=ExtResource("6_sd1q0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4138465, 0, 0.864794)
+
+[node name="gravestone-cross2" parent="." unique_id=1015686263 instance=ExtResource("7_6ir2k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0273362, 0, 1.519219)
+
+[node name="gravestone-debris2" parent="." unique_id=515159696 instance=ExtResource("8_xqpkt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22188342, 0, 2.089226)
+
+[node name="gravestone-broken2" parent="." unique_id=1584618462 instance=ExtResource("9_yam63")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0381333, 0, 2.0870597)
+
+[node name="gravestone-bevel2" parent="." unique_id=484366316 instance=ExtResource("10_soicp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="grave2" parent="." unique_id=626650549 instance=ExtResource("11_xfpyt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
+
+[node name="grave-border2" parent="." unique_id=1691867839 instance=ExtResource("12_kwixv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
+
+[node name="GridMap" type="GridMap" parent="." unique_id=257881824]
+mesh_library = SubResource("MeshLibrary_qmi2p")

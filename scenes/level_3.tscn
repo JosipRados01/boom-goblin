@@ -1,36 +1,37 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene format=3 uid="uid://demhfxwf7ibnw"]
 
-[ext_resource type="Script" path="res://scenes/level.gd" id="1_level"]
+[ext_resource type="Script" uid="uid://bc1207k7wl86t" path="res://scenes/level.gd" id="1_level"]
 [ext_resource type="PackedScene" uid="uid://vem324mqdqpn" path="res://scenes/lvl_3.tscn" id="2_grid"]
 [ext_resource type="PackedScene" uid="uid://blw1wuil57hc4" path="res://scenes/target.tscn" id="3_target"]
-[ext_resource type="PackedScene" path="res://scenes/enemy_ghost.tscn" id="4_ghost"]
+[ext_resource type="PackedScene" uid="uid://b78fh70gglsxv" path="res://scenes/enemy_ghost.tscn" id="4_ghost"]
 [ext_resource type="PackedScene" path="res://scenes/enemy_skeleton.tscn" id="5_skeleton"]
 [ext_resource type="Script" uid="uid://blvlcol7gdq42" path="res://scenes/add_level_collision.gd" id="6_collision"]
 
-[node name="Level3" type="Node3D"]
+[node name="Level3" type="Node3D" unique_id=913933894]
 script = ExtResource("1_level")
 title = "THE LONG WALK"
-fuse_time = 30.0
 
-[node name="Grid" parent="." instance=ExtResource("2_grid")]
+[node name="Grid" parent="." unique_id=157599902 instance=ExtResource("2_grid")]
 
-[node name="PlayerSpawn" type="Marker3D" parent="."]
+[node name="PlayerSpawn" type="Marker3D" parent="." unique_id=1050834570]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.3, 4)
 
-[node name="Target" parent="." instance=ExtResource("3_target")]
+[node name="Target" parent="." unique_id=815626876 instance=ExtResource("3_target")]
 transform = Transform3D(-2, 0, 0, 0, 2, 0, 0, 0, -2, 25, 0, 68)
 
-[node name="EnemyGhost" parent="." instance=ExtResource("4_ghost")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0.6, 20)
-patrol_span = 30.0
+[node name="EnemyGhost" parent="." unique_id=1643562761 instance=ExtResource("4_ghost")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.09589, 0.6, 20)
+patrol_axis = 1
+patrol_span = 10.0
+patrol_speed = 0.4
 
-[node name="EnemySkeleton" parent="." instance=ExtResource("5_skeleton")]
+[node name="EnemySkeleton" parent="." unique_id=1578585237 instance=ExtResource("5_skeleton")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0.3, 40)
 patrol_offset = Vector3(10, 0, 0)
 
-[node name="EnemySkeleton2" parent="." instance=ExtResource("5_skeleton")]
+[node name="EnemySkeleton2" parent="." unique_id=1269926957 instance=ExtResource("5_skeleton")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.3, 56)
 patrol_offset = Vector3(22, 0, 0)
 
-[node name="LevelCollision" type="Node" parent="."]
+[node name="LevelCollision" type="Node" parent="." unique_id=801597636]
 script = ExtResource("6_collision")

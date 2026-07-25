@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cwxfnfj056aj2"]
+
+[ext_resource type="PackedScene" uid="uid://esc7kj6pbjpo" path="res://Graveyard models/GLB format/character-zombie.glb" id="1_ym1k5"]
+
+[node name="character-zombie2" unique_id=681055459 instance=ExtResource("1_ym1k5")]
+
+[node name="root" parent="character-zombie" parent_id_path=PackedInt32Array(285729177) index="0" unique_id=2013527664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+
+[node name="arm-left" parent="character-zombie/root/torso" parent_id_path=PackedInt32Array(886933987) index="0" unique_id=1538375069]
+transform = Transform3D(0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0, 1, 0.15, 0.2, 0.0025)
+
+[node name="arm-right" parent="character-zombie/root/torso" parent_id_path=PackedInt32Array(886933987) index="1" unique_id=1470674202]
+transform = Transform3D(0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0, 1, -0.15, 0.2, 0.0025)
+
+[node name="leg-right" parent="character-zombie/root" index="1" unique_id=465478623]
+transform = Transform3D(1, 0, 0, 0, 0.25881895, 0.9659259, 0, -0.9659259, 0.25881895, -0.074204, 0.223184, -7.219114e-16)
+
+[node name="leg-left" parent="character-zombie/root" index="2" unique_id=1095992801]
+transform = Transform3D(1, 0, 0, 0, 0.25881895, 0.9659259, 0, -0.9659259, 0.25881895, 0.074204, 0.223184, -7.219114e-16)
