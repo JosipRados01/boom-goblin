@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://bqm3n7v2xk4ls"]
+
+[ext_resource type="PackedScene" uid="uid://hrwk2qwexw5s" path="res://scenes/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" uid="uid://5nj44ef7a7l7" path="res://Graveyard models/GLB format/crypt.glb" id="2_crypt"]
+[ext_resource type="PackedScene" uid="uid://cqxp2cuuq0llg" path="res://Graveyard models/GLB format/gravestone-cross.glb" id="3_grave"]
+[ext_resource type="PackedScene" uid="uid://ewubdxtdd0n" path="res://Graveyard models/GLB format/lightpost-single.glb" id="4_post"]
+[ext_resource type="PackedScene" uid="uid://dx1jjoej3d6ju" path="res://Graveyard models/GLB format/pillar-obelisk.glb" id="5_obelisk"]
+
+[sub_resource type="Environment" id="Environment_night"]
+background_mode = 1
+background_color = Color(0.012, 0.018, 0.032, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.16, 0.2, 0.3, 1)
+ambient_light_energy = 0.5
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.04, 0.055, 0.085, 1)
+fog_density = 0.022
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ground"]
+albedo_color = Color(0.065, 0.085, 0.07, 1)
+roughness = 1.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ground"]
+material = SubResource("StandardMaterial3D_ground")
+size = Vector2(44, 44)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ground"]
+size = Vector3(44, 0.1, 44)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_crypt"]
+size = Vector3(4.6, 3.2, 4.2)
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_night")
+
+[node name="Moonlight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8192, -0.4394, 0.3687, 0, 0.6428, 0.766, -0.5736, -0.6275, 0.5266, 0, 12, 0)
+light_color = Color(0.6, 0.68, 0.9, 1)
+light_energy = 0.35
+shadow_enabled = true
+directional_shadow_max_distance = 60.0
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_ground")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+shape = SubResource("BoxShape3D_ground")
+
+[node name="Crypt" parent="." instance=ExtResource("2_crypt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
+
+[node name="CryptCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CryptCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -14)
+shape = SubResource("BoxShape3D_crypt")
+
+[node name="Gravestone1" parent="." instance=ExtResource("3_grave")]
+transform = Transform3D(0.966, 0, 0.259, 0, 1, 0, -0.259, 0, 0.966, -3.5, 0, 1)
+
+[node name="Gravestone2" parent="." instance=ExtResource("3_grave")]
+transform = Transform3D(0.906, 0, -0.423, 0, 1, 0, 0.423, 0, 0.906, 3.2, 0, -1.5)
+
+[node name="Gravestone3" parent="." instance=ExtResource("3_grave")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6)
+
+[node name="Gravestone4" parent="." instance=ExtResource("3_grave")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 4.5, 0, -7)
+
+[node name="Obelisk" parent="." instance=ExtResource("5_obelisk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -10)
+
+[node name="Lightpost1" parent="." instance=ExtResource("4_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3.5)
+
+[node name="LampLight1" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -3.5)
+light_color = Color(1, 0.72, 0.42, 1)
+light_energy = 2.5
+shadow_enabled = true
+omni_range = 8.0
+
+[node name="Lightpost2" parent="." instance=ExtResource("4_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -10.5)
+
+[node name="LampLight2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, -10.5)
+light_color = Color(1, 0.72, 0.42, 1)
+light_energy = 2.5
+shadow_enabled = true
+omni_range = 8.0
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 8)

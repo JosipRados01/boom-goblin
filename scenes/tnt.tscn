@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://qhgr551mwk52"]
+
+[ext_resource type="Script" uid="uid://utdnqsq2cf2p" path="res://scenes/tnt.gd" id="1_tntgd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmi2p"]
+albedo_color = Color(0.7025663, 1.8169359e-06, 9.62615e-07, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qmi2p"]
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vr51q"]
+transparency = 1
+albedo_color = Color(1, 0.87058824, 0.1882353, 1)
+emission_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_f1w2h"]
+material = SubResource("StandardMaterial3D_vr51q")
+radius = 0.01
+height = 0.02
+
+[node name="TNT" type="Node3D" unique_id=190564080]
+script = ExtResource("1_tntgd")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=102463088]
+radius = 0.08
+height = 0.4
+material = SubResource("StandardMaterial3D_qmi2p")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=48710641]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35323277, 0)
+radius = 0.01
+height = 0.3
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="CSGCylinder3D2" unique_id=398850781]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1429168, 0)
+lifetime = 0.06
+process_material = SubResource("ParticleProcessMaterial_qmi2p")
+draw_pass_1 = SubResource("SphereMesh_f1w2h")

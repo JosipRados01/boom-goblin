@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://coxeloct508xb"
+path="res://.godot/imported/pumpkin-tall.obj-cd02cbe76b66a1a9b8ffbaf66c93f16f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pumpkin-tall.obj-cd02cbe76b66a1a9b8ffbaf66c93f16f.mesh"]
+
+source_file="res://Graveyard models/OBJ format/pumpkin-tall.obj"
+dest_files=["res://.godot/imported/pumpkin-tall.obj-cd02cbe76b66a1a9b8ffbaf66c93f16f.mesh", "res://.godot/imported/pumpkin-tall.obj-cd02cbe76b66a1a9b8ffbaf66c93f16f.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

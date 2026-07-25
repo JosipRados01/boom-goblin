@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bmpyhn0ahus6x"
+path="res://.godot/imported/stone-wall-curve.obj-4dab40f1192f5b341b7b758c097b2b16.mesh"
+
+[deps]
+
+files=["res://.godot/imported/stone-wall-curve.obj-4dab40f1192f5b341b7b758c097b2b16.mesh"]
+
+source_file="res://Graveyard models/OBJ format/stone-wall-curve.obj"
+dest_files=["res://.godot/imported/stone-wall-curve.obj-4dab40f1192f5b341b7b758c097b2b16.mesh", "res://.godot/imported/stone-wall-curve.obj-4dab40f1192f5b341b7b758c097b2b16.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

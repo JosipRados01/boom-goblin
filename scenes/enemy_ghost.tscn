@@ -1,0 +1,16 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/enemy_ghost.gd" id="1_ghostgd"]
+[ext_resource type="PackedScene" uid="uid://cwytdhctdrv6r" path="res://Graveyard models/GLB format/character-ghost.glb" id="2_ghost"]
+
+[node name="EnemyGhost" type="Node3D"]
+script = ExtResource("1_ghostgd")
+
+[node name="Model" parent="." instance=ExtResource("2_ghost")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.8, 0)
+
+[node name="Glow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+light_color = Color(0.55, 0.75, 1, 1)
+light_energy = 1.4
+omni_range = 3.0

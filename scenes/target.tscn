@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://blw1wuil57hc4"]
+
+[ext_resource type="PackedScene" uid="uid://btcluoxygdanh" path="res://scenes/count blablabla.tscn" id="1_b5a2r"]
+[ext_resource type="Script" uid="uid://6ss2dsbrj6u0" path="res://scenes/target.gd" id="1_tgtgd"]
+[ext_resource type="PackedScene" uid="uid://bswy3g5ftobtc" path="res://Graveyard models/GLB format/trunk.glb" id="2_nlbrr"]
+
+[node name="Target" type="Node3D" unique_id=924451611]
+script = ExtResource("1_tgtgd")
+
+[node name="character-vampire2" parent="." unique_id=1790729678 instance=ExtResource("1_b5a2r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2988515, 0.058248013)
+
+[node name="trunk2" parent="." unique_id=2122998736 instance=ExtResource("2_nlbrr")]

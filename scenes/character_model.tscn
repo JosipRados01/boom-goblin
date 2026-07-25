@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cis4417b0qmj1"]
+
+[ext_resource type="PackedScene" uid="uid://cdcvnwrrettj1" path="res://Dungeon models/GLB format/character-orc.glb" id="1_d5uc0"]
+[ext_resource type="PackedScene" uid="uid://qhgr551mwk52" path="res://scenes/tnt.tscn" id="2_dnbsg"]
+
+[node name="character-orc2" unique_id=56057872 instance=ExtResource("1_d5uc0")]
+
+[node name="TNT" parent="character-orc/root/torso" parent_id_path=PackedInt32Array(1314989963) index="0" unique_id=190564080 instance=ExtResource("2_dnbsg")]
+transform = Transform3D(0.67959833, -0.73358446, 0, 0.73358446, 0.67959833, 0, 0, 0, 1, 0, 0.06361678, -0.1817646)
