@@ -10,7 +10,7 @@ extends Node3D
 @export var title := ""
 ## How long the fuse burns in this level. Long enough to sneak, short enough
 ## that the last stretch is a sprint.
-@export var fuse_time := 45.0
+@export var fuse_time := 30.0
 
 
 func spawn_transform() -> Transform3D:

@@ -3,6 +3,10 @@ extends Node3D
 ## Tiny sense radius; darts at the goblin only when he gets very close.
 ## No collision on purpose: it is a ghost.
 
+## Which axis the lane runs along. Rotating the node aims it too, but the ghost
+## turns to face where it is flying, so the rotation you set vanishes on frame
+## one — pick the axis here instead.
+@export_enum("X", "Z") var patrol_axis := 0
 @export var patrol_span := 22.0
 @export var patrol_speed := 4.5
 @export var chase_speed := 4.2
@@ -26,7 +30,7 @@ var _current_anim := ""
 func _ready() -> void:
 	add_to_group("no_autocol")
 	_origin = global_position
-	_axis = global_basis.x.normalized()
+	_axis = (global_basis.z if patrol_axis == 1 else global_basis.x).normalized()
 	_hover_base = model.position.y
 	for anim_name in ["idle", "sprint"]:
 		var a := anim.get_animation(anim_name)

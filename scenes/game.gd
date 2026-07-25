@@ -5,8 +5,9 @@ extends Node
 ## is to blow up Dracula.
 
 const LEVELS: Array[String] = [
-	"res://scenes/level_1.tscn",
+	"res://scenes/level_3.tscn", ## changed for testing
 	"res://scenes/level_2.tscn",
+	"res://scenes/level_3.tscn",
 ]
 
 ## True for the one round right after the last level was beaten, so game_env

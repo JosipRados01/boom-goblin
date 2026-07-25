@@ -8,7 +8,7 @@ extends Node3D
 	"I am Count Dracula Bla bla blaa!",
 	"I You can COUNT on me!",
 	"Well...This is a bit awkward...",
-	"What an interesting...sparkling red cape?",
+	"What an interesting...sparkling red cape??",
 ]
 ## Local height above the target's origin. Scales with the node.
 @export var bubble_height := 1.4

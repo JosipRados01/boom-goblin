@@ -1,32 +1,21 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene format=3 uid="uid://3vfmpp8hppp1"]
 
-[ext_resource type="Script" path="res://scenes/level.gd" id="1_level"]
+[ext_resource type="Script" uid="uid://bc1207k7wl86t" path="res://scenes/level.gd" id="1_level"]
 [ext_resource type="PackedScene" uid="uid://ctuduv3s827j4" path="res://scenes/lvl1 grid map.tscn" id="2_grid"]
 [ext_resource type="PackedScene" uid="uid://blw1wuil57hc4" path="res://scenes/target.tscn" id="3_target"]
-[ext_resource type="PackedScene" path="res://scenes/enemy_ghost.tscn" id="4_ghost"]
-[ext_resource type="PackedScene" path="res://scenes/enemy_skeleton.tscn" id="5_skeleton"]
 [ext_resource type="Script" uid="uid://blvlcol7gdq42" path="res://scenes/add_level_collision.gd" id="6_collision"]
 
-[node name="Level1" type="Node3D"]
+[node name="Level1" type="Node3D" unique_id=1406338222]
 script = ExtResource("1_level")
 title = "THE OLD KEEP"
-fuse_time = 55.0
 
-[node name="Grid" parent="." instance=ExtResource("2_grid")]
+[node name="Grid" parent="." unique_id=1522537250 instance=ExtResource("2_grid")]
 
-[node name="PlayerSpawn" type="Marker3D" parent="."]
+[node name="PlayerSpawn" type="Marker3D" parent="." unique_id=1820123303]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0.3, 5)
 
-[node name="Target" parent="." instance=ExtResource("3_target")]
+[node name="Target" parent="." unique_id=859788102 instance=ExtResource("3_target")]
 transform = Transform3D(-1, 0, 1.7320509, 0, 2, 0, -1.7320509, 0, -1, 4, 1.8, 54)
 
-[node name="EnemyGhost" parent="." instance=ExtResource("4_ghost")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.6, 36)
-patrol_span = 16.0
-
-[node name="EnemySkeleton" parent="." instance=ExtResource("5_skeleton")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0.3, 30)
-patrol_offset = Vector3(0, 0, 14)
-
-[node name="LevelCollision" type="Node" parent="."]
+[node name="LevelCollision" type="Node" parent="." unique_id=2034405113]
 script = ExtResource("6_collision")

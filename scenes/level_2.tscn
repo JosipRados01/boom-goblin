@@ -1,32 +1,32 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene format=3 uid="uid://3duxwytcdpsr"]
 
-[ext_resource type="Script" path="res://scenes/level.gd" id="1_level"]
+[ext_resource type="Script" uid="uid://bc1207k7wl86t" path="res://scenes/level.gd" id="1_level"]
 [ext_resource type="PackedScene" uid="uid://p00u2f22qf2v" path="res://scenes/lvl 2 grid map.tscn" id="2_grid"]
 [ext_resource type="PackedScene" uid="uid://blw1wuil57hc4" path="res://scenes/target.tscn" id="3_target"]
 [ext_resource type="PackedScene" path="res://scenes/enemy_ghost.tscn" id="4_ghost"]
-[ext_resource type="PackedScene" path="res://scenes/enemy_skeleton.tscn" id="5_skeleton"]
 [ext_resource type="Script" uid="uid://blvlcol7gdq42" path="res://scenes/add_level_collision.gd" id="6_collision"]
 
-[node name="Level2" type="Node3D"]
+[node name="Level2" type="Node3D" unique_id=329112127]
 script = ExtResource("1_level")
 title = "THE CRYPT"
-fuse_time = 45.0
 
-[node name="Grid" parent="." instance=ExtResource("2_grid")]
+[node name="Grid" parent="." unique_id=1456777691 instance=ExtResource("2_grid")]
 
-[node name="PlayerSpawn" type="Marker3D" parent="."]
+[node name="PlayerSpawn" type="Marker3D" parent="." unique_id=1655463285]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.3, 4)
 
-[node name="Target" parent="." instance=ExtResource("3_target")]
+[node name="Target" parent="." unique_id=658794185 instance=ExtResource("3_target")]
 transform = Transform3D(-2, 0, 0, 0, 2, 0, 0, 0, -2, 21, 0, 47)
 
-[node name="EnemyGhost" parent="." instance=ExtResource("4_ghost")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.6, 22)
+[node name="EnemyGhost" parent="." unique_id=946459047 instance=ExtResource("4_ghost")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.48295, 0.59999907, 18.08123)
+patrol_span = 17.0
+detect_range = 5.0
+
+[node name="EnemyGhost2" parent="." unique_id=839755765 instance=ExtResource("4_ghost")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.630136, 0.6, 33.73225)
 patrol_span = 20.0
+detect_range = 5.0
 
-[node name="EnemySkeleton" parent="." instance=ExtResource("5_skeleton")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.3, 36)
-patrol_offset = Vector3(16, 0, 0)
-
-[node name="LevelCollision" type="Node" parent="."]
+[node name="LevelCollision" type="Node" parent="." unique_id=829886437]
 script = ExtResource("6_collision")
