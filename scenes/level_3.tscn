@@ -26,12 +26,12 @@ patrol_span = 10.0
 patrol_speed = 0.4
 
 [node name="EnemySkeleton" parent="." unique_id=1578585237 instance=ExtResource("5_skeleton")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0.3, 40)
-patrol_offset = Vector3(10, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0.3, 40)
+patrol_offset = Vector3(20, 0, 0)
 
 [node name="EnemySkeleton2" parent="." unique_id=1269926957 instance=ExtResource("5_skeleton")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.3, 56)
-patrol_offset = Vector3(22, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0.3, 62)
+patrol_offset = Vector3(10, 0, -5)
 
 [node name="LevelCollision" type="Node" parent="." unique_id=801597636]
 script = ExtResource("6_collision")
